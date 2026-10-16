@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2a1b3d">
+  <link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Mabakoena’s Daily Word</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:wght@400;600&display=swap">
 <style>
@@ -131,6 +136,7 @@ textarea{width:100%;min-height:100px;border-radius:18px;border:1px solid var(--l
     <div class="card"><b class="serif" style="font-size:22px">Your morning reminder</b>
       <p class="note" id="rm" style="margin-top:6px"></p></div>
   </section>
+    <section class="sec"><button class="btn" id="inst" hidden>Install this app on my phone</button></section>
 
   <p class="tip">Tip: in your browser menu choose “Add to Home screen” so Daily Word sits with your other apps.</p>
 </main>
@@ -224,6 +230,11 @@ $("go").onclick=function(){
   confetti();setTimeout(openHome,900);
 };
 if(S.joined)openHome();
+  if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){})}
+var dp;
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;$("inst").hidden=false});
+$("inst").onclick=function(){if(dp){dp.prompt();dp=null;$("inst").hidden=true}};
+window.addEventListener("appinstalled",function(){$("inst").hidden=true});
 </script>
 </body>
 </html>
