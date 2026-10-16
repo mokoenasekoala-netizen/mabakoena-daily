@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a1b3d">
+<title>Mabakoena’s Daily Word</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f8f0f3;--card:#fff;--ink:#2a1b3d;--mute:#6d5a7c;--rose:#b8586f;--sage:#5f8468;--line:#e8d9df;--gold:#c9a24a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1126;--card:#261836;--ink:#f6e9ee;--mute:#b7a3c4;--rose:#e58aa1;--sage:#8fb799;--line:#3a2850}}
+:root[data-theme="dark"]{--bg:#1b1126;--card:#261836;--ink:#f6e9ee;--mute:#b7a3c4;--rose:#e58aa1;--sage:#8fb799;--line:#3a2850}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.serif,h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.08;margin:0}
+[hidden]{display:none!important}
+#petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-30px;background:var(--rose);opacity:.35;border-radius:60% 0 60% 0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate(0,-30px) rotate(0)}50%{transform:translate(40px,55vh) rotate(180deg)}100%{transform:translate(-20px,112vh) rotate(360deg)}}
+.screen{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:24px 18px 48px}
+/* sign-up */
+#join{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;color:#fbeff3;text-align:center;background:linear-gradient(160deg,#2a1b3d,#4a2a5e,#6b3558,#2a1b3d);background-size:300% 300%;animation:flow 14s ease infinite;max-width:none}
+#join>div{max-width:480px;margin:0 auto;width:100%}
+@keyframes flow{50%{background-position:100% 100%}}
+.cross{width:46px;height:60px;margin:0 auto 14px;position:relative;opacity:0;animation:glow 2.2s .2s ease forwards}
+.cross:before,.cross:after{content:"";position:absolute;background:var(--gold);border-radius:3px;box-shadow:0 0 18px var(--gold)}
+.cross:before{left:20px;top:0;width:6px;height:60px}.cross:after{left:0;top:16px;width:46px;height:6px}
+@keyframes glow{to{opacity:1}}
+.welcome{font-size:20px;opacity:0;animation:glow 1s 1s forwards;margin:0}
+.name{font-size:clamp(46px,14vw,68px);margin:4px 0 6px}
+.name span{display:inline-block;opacity:0;transform:translateY(24px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.lead{max-width:34ch;margin:0 auto 26px;opacity:0;animation:glow 1s 2.2s forwards;font-size:17px}
+.form{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);border-radius:24px;padding:22px 20px;text-align:left;opacity:0;animation:up 1s 2.7s forwards}
+label{display:block;font-size:14px;margin:0 0 4px;opacity:.85}
+input[type=text],input[type=time]{width:100%;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font:inherit;margin-bottom:14px}
+input:focus,button:focus-visible,textarea:focus{outline:2px solid var(--gold);outline-offset:2px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin:2px 0 18px;opacity:.95}
+.chk input{margin-top:5px;accent-color:#c9a24a;width:18px;height:18px}
+.btn{width:100%;border:0;border-radius:16px;padding:15px;font:600 17px "Nunito Sans",sans-serif;background:linear-gradient(120deg,#e2c373,#c9a24a);color:#2a1b3d;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.bit{position:fixed;left:50%;top:50%;width:9px;height:14px;z-index:9;pointer-events:none;animation:burst 1.6s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+/* home */
+h1.hello{font-size:36px;margin:6px 0 2px}.date{color:var(--mute);margin:0 0 18px}
+.verse{position:relative;border-radius:28px;padding:34px 24px 26px;color:#fbeff3;background:linear-gradient(150deg,#2a1b3d,#51305f);overflow:hidden;box-shadow:0 18px 40px -18px rgba(42,27,61,.6)}
+.verse:before{content:"";position:absolute;width:240px;height:240px;right:-70px;top:-90px;background:radial-gradient(circle,rgba(201,162,74,.5),transparent 70%);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.25);opacity:.7}}
+.verse .t{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:1.35;position:relative}
+.verse .t span{opacity:0;display:inline-block;margin-right:.28em;animation:up .6s ease forwards}
+.verse .ref{position:relative;margin-top:16px;color:#e2c373;font-style:italic;font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;opacity:0;animation:glow .8s forwards}
+.share{position:relative;margin-top:16px;background:transparent;border:1px solid rgba(251,239,243,.5);color:#fbeff3;border-radius:99px;padding:8px 18px;font:inherit;cursor:pointer}
+.sec{margin-top:26px}.sec h2{font-size:27px;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.letter{display:none;margin-top:12px}.letter.open{display:block;animation:up .7s ease both}
+.letter p{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;line-height:1.5;margin:0 0 12px}
+.letter .sig{font-style:italic;color:var(--rose);margin:0}
+.bday{width:100%;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:flex;gap:12px;align-items:center}
+.bday i{font-style:normal;font-size:28px;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px) rotate(8deg)}}
+.drops{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.drop{aspect-ratio:1;border-radius:18px;border:1.5px solid var(--line);background:var(--card);font-size:28px;cursor:pointer;filter:grayscale(1);opacity:.55;transition:.25s}
+.drop.on{background:var(--sage);border-color:var(--sage);filter:none;opacity:1;animation:pop .4s}
+@keyframes pop{50%{transform:scale(1.15)}}
+.note{color:var(--mute);margin:10px 0 0}
+textarea{width:100%;min-height:100px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:14px 16px;font:inherit;resize:vertical}
+.row{display:flex;justify-content:space-between;color:var(--mute);font-size:14px;margin-top:6px}
+.streak{display:flex;align-items:center;gap:14px}.streak b{font-family:"Cormorant Garamond",Georgia,serif;font-size:42px;color:var(--rose);line-height:1}
+.tip{margin-top:28px;text-align:center;color:var(--mute);font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition:none!important}.petal{display:none}}
+</style>
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+
+<main id="join" class="screen">
+  <div>
+    <div class="cross" aria-hidden="true"></div>
+    <p class="welcome">Welcome,</p>
+    <h1 class="name" id="nm" aria-label="Mabakoena"></h1>
+    <p class="lead">Your own daily Word. A new Bible verse waiting for you every morning, made with love by Nelson.</p>
+    <div class="form">
+      <label for="who">Your name</label>
+      <input type="text" id="who" value="Mabakoena Sekoala" autocomplete="name">
+      <label for="tm">When should I remind you each morning?</label>
+      <input type="time" id="tm" value="06:30">
+      <div class="chk"><input type="checkbox" id="ok" checked><label for="ok" style="margin:0;opacity:1">Yes, I want my daily Word of encouragement.</label></div>
+      <button class="btn" id="go">Join and open my Word</button>
+    </div>
+  </div>
+</main>
+
+<main id="home" class="screen" hidden>
+  <h1 class="hello" id="hello"></h1>
+  <p class="date" id="date"></p>
+
+  <section class="verse" aria-live="polite">
+    <div class="t" id="vt"></div>
+    <div class="ref" id="vr"></div>
+    <button class="share" id="sh">Share this verse</button>
+  </section>
+
+  <section class="sec">
+    <button class="card bday" id="bd"><i>🎂</i><span><b class="serif" style="font-size:24px">Happy Birthday, Mabakoena</b><br><span style="color:var(--mute)">A letter from Nelson. Tap to read.</span></span></button>
+    <div class="card letter" id="lt">
+      <p>Mme, thank you for every sacrifice, every prayer and every meal you gave us without being asked.</p>
+      <p>Everything I am learning and building starts with the way you raised me. I made this so a small piece of me, and a verse of God’s Word, can be with you every morning.</p>
+      <p>Ke u rata, Mme. Happy birthday.</p>
+      <p class="sig">With all my love, Nelson</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Water for the day</h2>
+    <div class="drops" id="drops"></div>
+    <p class="note" id="wn"></p>
+  </section>
+
+  <section class="sec">
+    <h2>One thing I’m grateful for</h2>
+    <textarea id="gr" placeholder="Write it here. It saves on its own."></textarea>
+    <div class="row"><span id="sv"></span></div>
+  </section>
+
+  <section class="sec">
+    <div class="card streak"><b id="st">1</b><span id="stt"></span></div>
+  </section>
+
+  <section class="sec">
+    <div class="card"><b class="serif" style="font-size:22px">Your morning reminder</b>
+      <p class="note" id="rm" style="margin-top:6px"></p></div>
+  </section>
+
+  <p class="tip">Tip: in your browser menu choose “Add to Home screen” so Daily Word sits with your other apps.</p>
+</main>
+
+<script>
+var V=[
+["Isaiah 41:10","Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee."],
+["Philippians 4:13","I can do all things through Christ which strengtheneth me."],
+["Psalm 46:1","God is our refuge and strength, a very present help in trouble."],
+["Proverbs 31:25","Strength and honour are her clothing; and she shall rejoice in time to come."],
+["Jeremiah 29:11","For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end."],
+["Psalm 23:1","The LORD is my shepherd; I shall not want."],
+["Joshua 1:9","Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest."],
+["Matthew 11:28","Come unto me, all ye that labour and are heavy laden, and I will give you rest."],
+["Psalm 121:1-2","I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth."],
+["Romans 8:28","And we know that all things work together for good to them that love God, to them who are the called according to his purpose."],
+["Proverbs 3:5","Trust in the LORD with all thine heart; and lean not unto thine own understanding."],
+["Isaiah 40:31","They that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary."],
+["Psalm 118:24","This is the day which the LORD hath made; we will rejoice and be glad in it."],
+["Lamentations 3:22-23","His compassions fail not. They are new every morning: great is thy faithfulness."],
+["Numbers 6:24-26","The LORD bless thee, and keep thee: the LORD make his face shine upon thee, and be gracious unto thee: the LORD lift up his countenance upon thee, and give thee peace."],
+["John 14:27","Peace I leave with you, my peace I give unto you. Let not your heart be troubled, neither let it be afraid."],
+["Psalm 37:4","Delight thyself also in the LORD; and he shall give thee the desires of thine heart."],
+["Zephaniah 3:17","The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy."],
+["Proverbs 31:28","Her children arise up, and call her blessed."],
+["2 Corinthians 12:9","My grace is sufficient for thee: for my strength is made perfect in weakness."],
+["Psalm 30:5","Weeping may endure for a night, but joy cometh in the morning."],
+["1 Peter 5:7","Casting all your care upon him; for he careth for you."],
+["Philippians 4:7","And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."],
+["Psalm 91:1","He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty."],
+["Galatians 6:9","And let us not be weary in well doing: for in due season we shall reap, if we faint not."],
+["Deuteronomy 31:6","Be strong and of a good courage, fear not: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee."],
+["Romans 15:13","Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope."],
+["Psalm 28:7","The LORD is my strength and my shield; my heart trusted in him, and I am helped."],
+["Psalm 139:14","I will praise thee; for I am fearfully and wonderfully made."],
+["Proverbs 31:30","A woman that feareth the LORD, she shall be praised."]
+];
+function $(i){return document.getElementById(i)}
+function pad(n){return n<10?"0"+n:""+n}
+function key(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+var now=new Date(),today=key(now),S={};
+try{S=JSON.parse(localStorage.getItem("mabakoena-daily")||"{}")}catch(e){S={}}
+function save(){try{localStorage.setItem("mabakoena-daily",JSON.stringify(S))}catch(e){}}
+
+/* falling petals */
+var P=$("petals");
+for(var i=0;i<14;i++){var p=document.createElement("span");p.className="petal";var z=10+Math.random()*14;
+p.style.cssText="left:"+Math.random()*100+"%;width:"+z+"px;height:"+z+"px;animation-duration:"+(14+Math.random()*14)+"s;animation-delay:-"+Math.random()*20+"s";P.appendChild(p)}
+
+/* animated name */
+"Mabakoena".split("").forEach(function(c,i){var s=document.createElement("span");s.textContent=c;s.style.animationDelay=(1.2+i*.09)+"s";$("nm").appendChild(s)});
+
+function confetti(){
+  var cols=["#e2c373","#e58aa1","#fbeff3","#8fb799","#c9a24a"];
+  for(var i=0;i<46;i++){var b=document.createElement("i");b.className="bit";
+  b.style.background=cols[i%5];b.style.setProperty("--x",(Math.random()*520-260)+"px");
+  b.style.setProperty("--y",(Math.random()*-420-60)+"px");b.style.setProperty("--r",(Math.random()*720)+"deg");
+  document.body.appendChild(b);setTimeout(function(x){x.remove()},1700,b)}
+}
+
+function openHome(){
+  $("join").hidden=true;$("home").hidden=false;window.scrollTo(0,0);
+  var first=(S.name||"Mabakoena").split(" ")[0],h=now.getHours();
+  $("hello").textContent=(h<12?"Good morning":h<17?"Good afternoon":"Good evening")+", "+first;
+  $("date").textContent=now.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
+  var doy=Math.floor((now-new Date(now.getFullYear(),0,0))/864e5),v=V[doy%V.length];
+  var vt=$("vt");vt.innerHTML="";
+  ("“"+v[1]+"”").split(" ").forEach(function(w,i){var s=document.createElement("span");s.textContent=w;s.style.animationDelay=(.3+i*.09)+"s";vt.appendChild(s)});
+  var rr=$("vr");rr.textContent=v[0];rr.style.animationDelay=(.5+v[1].split(" ").length*.09)+"s";
+  $("sh").onclick=function(){var t="“"+v[1]+"” — "+v[0]+"\n\nFrom Mabakoena’s Daily Word";
+    if(navigator.share){navigator.share({text:t}).catch(function(){})}else{window.open("https://wa.me/?text="+encodeURIComponent(t),"_blank")}};
+  $("rm").textContent="Every morning at "+(S.time||"06:30")+" a new verse is waiting. To get a buzz on your phone, set a daily alarm or reminder at that time called “My Daily Word”, and tap this app when it rings.";
+
+  S.days=S.days||{};var d=S.days[today]=S.days[today]||{w:0,g:""};
+  var box=$("drops");
+  (function rw(){box.innerHTML="";for(var i=1;i<=8;i++){(function(i){var b=document.createElement("button");b.className="drop"+(d.w>=i?" on":"");b.textContent="💧";b.setAttribute("aria-label","Glass "+i);
+    b.onclick=function(){d.w=(d.w===i)?i-1:i;save();rw()};box.appendChild(b)})(i)}
+    $("wn").textContent=d.w>=8?"All 8 glasses done. Well done, Mabakoena.":d.w+" of 8 glasses. Tap a drop each time you drink."})();
+  var g=$("gr"),t;g.value=d.g||"";
+  g.oninput=function(){d.g=g.value;$("sv").textContent="Saving…";clearTimeout(t);t=setTimeout(function(){save();$("sv").textContent="Saved"},500)};
+  var st=S.streak||0;
+  if(S.last!==today){var y=new Date(now);y.setDate(y.getDate()-1);st=(S.last===key(y))?st+1:1;S.streak=st;S.last=today}
+  $("st").textContent=st||1;$("stt").textContent=(st>1?"days":"day")+" in a row with your Daily Word";
+  $("bd").onclick=function(){var o=$("lt").classList.toggle("open");if(o){confetti();S.read=true;save()}};
+  save();
+}
+
+$("go").onclick=function(){
+  if(!$("ok").checked){$("ok").focus();return}
+  S.name=($("who").value||"Mabakoena").trim();S.time=$("tm").value||"06:30";S.joined=today;save();
+  confetti();setTimeout(openHome,900);
+};
+if(S.joined)openHome();
+</script>
+</body>
+</html>
